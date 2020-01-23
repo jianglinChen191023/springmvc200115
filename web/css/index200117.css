@@ -1,0 +1,61 @@
+body, ul {
+    margin: 0px;
+}
+
+#tanzhoDiv {
+    width: 1100px; /*宽度 px像素*/
+    height: 200px; /*高度*/
+    background-color: #a8d8eb;
+    margin: auto; /*上下 左右居中*/
+}
+
+ul {
+    list-style: none; /*清除小黑点*/
+}
+
+li {
+    float: left;
+    margin: 10px 15px;
+}
+
+img {
+    width: 220px;
+    height: 150px;
+    border-radius: 20px; /*圆角*/
+    /*transform: scale(0.8);*/
+}
+
+/*
+hover: 鼠标聚焦 伪标签
+transform: 转变
+scale: 规模
+*/
+li:hover img {
+    /* 绑定动画 */
+    animation: duang 1s;
+}
+
+/* 动画 */
+@keyframes duang {
+    0% {
+        transform: scale(1, 1);
+    }
+    50% {
+        transform: scale(0.9, 1.1);
+    }
+    60% {
+        transform: scale(0.8, 1.2);
+    }
+    70% {
+        transform: scale(0.7, 1.3);
+    }
+    80% {
+        transform: scale(0.8, 1.2);
+    }
+    90% {
+        transform: scale(0.9, 1.1);
+    }
+    100% {
+        transform: scale(1, 1);
+    }
+}

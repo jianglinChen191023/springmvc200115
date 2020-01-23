@@ -1,0 +1,201 @@
+﻿@charset "utf-8";
+/* 以下实际使用若已初始化可删除 .nav height父级需逐级设置为100%*/
+body, html {
+    height: 100%;
+    background: #E2E2E2
+}
+
+body, ul {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding-top: 50px;
+    font: 14px "微软雅黑", "宋体", "Arial Narrow", HELVETICA;
+    -webkit-text-size-adjust: 100%;
+}
+
+/* 清除黑点 */
+li {
+    list-style: none
+}
+
+/* 清除下划线 */
+a {
+    text-decoration: none;
+}
+
+/* 以上实际使用若已初始化可删除 */
+
+/* 设置整个菜单列表的样式 */
+/* nav */
+.nav-left {
+    width: 220px; /* 宽度220px */
+    height: 100%; /* 高度100% */
+    background: #263238; /* 背景颜色 */
+    transition: all .3s; /* 动画效果(过度效果: 如: hover变化样式时出现): 时间0.3秒 */
+    /* 绝对定位: 固定菜单列表的位置 */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* 设置二级菜单 */
+.nav-left a {
+    display: block; /* 	此元素将显示为块级元素 */
+    overflow: hidden; /* 内容溢出时,内容会被修剪，并且其余内容是不可见的, 兼容迷你模式 */
+    padding-left: 20px; /* 内容往右移动*/
+    line-height: 46px; /* 设置行高 */
+    max-height: 46px; /* 最大高度 */
+    color: #ABB1B7; /* 内容颜色 */
+    transition: all .3s; /* 过渡效果: 单位0.3秒 */
+}
+
+.nav-left a span {
+    margin-left: 30px; /* 往右移动 */
+}
+
+/* 二级菜单 兼容迷你模式: 二级菜单出现在相对的位置*/
+.nav-item {
+    position: relative; /* 相对位置 */
+}
+
+/*.nav-item.nav-show {*/
+/*    border-bottom: none;*/
+/*}*/
+
+/* 隐藏二级菜单并设置背景颜色 */
+.nav-item ul {
+    display: none;
+    background: rgba(0, 0, 0, .1); /* 0.1透明度的绝望黑 */
+}
+
+.nav-item.na v-show ul {
+    display: block;
+}
+
+/* 设置蓝色的选中竖杆 */
+.nav-item > a:before {
+    content: ""; /* 无内容 */
+    /* 绝对定位: 定位显示的位置 ,不然看不到*/
+    position: absolute;
+    left: 0px;
+    width: 2px; /* 宽度 */
+    height: 46px; /* 高度 */
+    background: #34A0CE; /* 背景颜色 */
+    opacity: 0; /* 透明度,相当隐藏 */
+    transition: all .3s; /* 过渡效果: 0.3秒,视觉感动效果好 */
+}
+
+/* 前置图标(导航图标) */
+.nav-left .nav-icon {
+    font-size: 20px; /* 图标大小 */
+    /* 内容间隔 */
+    position: absolute;
+    margin-left: -1px;
+}
+
+/* 此处修改导航图标 可自定义iconfont 替换*/
+.icon_1::after {
+    content: "\e62b";
+}
+
+.icon_2::after {
+    content: "\e669";
+}
+
+.icon_3::after {
+    content: "\e61d";
+}
+
+/*---------------------*/
+/* 导航右侧箭头 */
+.nav-more {
+    float: right; /* 向右浮动 */
+    margin-right: 20px; /* 右外边距 */
+    /*font-size: 12px; !* 图标大小: 不用改变 *!*/
+    transition: transform .3s; /* 过渡效果 0.3秒 */
+}
+
+/* 此处为导航右侧箭头 如果自定义iconfont 也需要替换*/
+.nav-more::after {
+    content: "\e621";
+}
+
+/*---------------------*/
+/*.nav-show .nav-more {*/
+/*    transform: rotate(90deg);*/
+/*}*/
+
+/* 鼠标移动到二级菜单上时,字体白色,背景黑色 */
+.nav-show, .nav-item > a:hover {
+    color: #FFF;
+    background: rgba(0, 0, 0, .1)
+}
+
+/*!* 二级菜单前 显示自己的蓝色竖杆 *!*/
+.nav-show > a:before, .nav-item > a:hover:before {
+    opacity: 1;
+}
+
+/*.nav-item li:hover a {*/
+/*    color: #FFF;*/
+/*    background: rgba(0, 0, 0, .1);*/
+/*}*/
+
+/* nav-mini */
+/* 改变高度,会引发 .nva的过渡效果(如果设置) */
+.nav-mini.nav-left {
+    width: 60px;
+}
+
+.nav-mini.nav-left .nav-icon { /* margin-left:-2px; */
+}
+
+/* 迷你模式: 隐藏二级菜单名称 */
+.nav-mini.nav-left .nav-item > a span {
+    display: none;
+}
+
+/* 迷你模式: 隐藏导航右侧箭头 */
+.nav-mini.nav-left .nav-more {
+    margin-right: -20px;
+}
+
+/* 迷你模式: 定位ul(三级菜单的位置) */
+.nav-mini.nav-left .nav-item ul {
+    /* 绝对定位 */
+    position: absolute;
+    top: 0px;
+    left: 60px;
+    width: 180px; /* 宽度 */
+    z-index: 99; /* 设置元素的堆叠顺序 */
+    background: #3C474C; /* 背景颜色 */
+    /*overflow: hidden; !* 隐藏溢出内容 *!*/
+    border-radius: 10px; /* 圆角 */
+}
+
+/* 迷你模式:  */
+/*.nav-mini.nav .nav-item:hover {*/
+/*    background: rgba(255, 255, 255, .1);*/
+/*}*/
+
+/*.nav-mini.nav .nav-item:hover .nav-item a {*/
+/*    color: #FFF;*/
+/*}*/
+
+/* 迷你模式: 鼠标移动到二级菜单时显示导航右侧箭头 */
+.nav-mini.nav-left .nav-item:hover a:before {
+    opacity: 1;
+}
+
+/* 迷你模式: 鼠标移动到二级菜单时以块形状显示三级菜单(默认隐藏<none>,鼠标触动显示) */
+.nav-mini.nav-left .nav-item:hover ul {
+    display: block;
+}
+
+
+
+
+
